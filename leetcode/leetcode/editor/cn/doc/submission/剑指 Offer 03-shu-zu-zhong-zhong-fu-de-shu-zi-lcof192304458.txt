@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int findRepeatNumber(vector<int>& nums) {
+        int n = nums.size();
+        for(int i = 0; i < n; i++){
+            int index = nums[i];
+            if(index >= n){
+                index -= n;
+            }
+            if(nums[index] >= n){
+                return index;
+            }
+            nums[index] += n;
+        }
+        return -1;
+    }
+};
+//runtime:40 ms
+//memory:22.5 MB

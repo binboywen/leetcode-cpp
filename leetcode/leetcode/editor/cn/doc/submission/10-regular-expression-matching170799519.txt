@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        return backTrack(s,p,0,0);
+    }
+
+    bool backTrack(string &s, string & p, int i, int j){
+        if(i == s.size() && j == p.size()){
+            return true;
+        }
+        if(j < p.size() - 1 && p[j + 1] == '*'){
+            if(i < s.size() && (p[j] == '.' || s[i] == p[j])){
+                return backTrack(s,p,i+1,j) || backTrack(s,p,i,j+2);
+            }
+            return backTrack(s,p,i,j+2);
+        }
+        if(i < s.size() && (p[j] == s[i] || p[j] == '.')){
+            return backTrack(s,p,i+1,j+1);
+        }
+        return false;
+    }
+};
+//runtime:28 ms
+//memory:6.1 MB

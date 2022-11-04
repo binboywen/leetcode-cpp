@@ -1,0 +1,24 @@
+class Solution {
+private:
+    vector<string> result;
+public:
+    vector<string> generateParenthesis(int n) {
+        backTrack(n,"",0,0);
+        return result;
+    }
+    
+    void backTrack(int n, string s, int left, int right){
+        if(s.size() == 2*n){
+            result.push_back(s);
+            return;
+        }
+        if(left < n){
+            backTrack(n, s+"(",left+1,right);
+        }
+        if(right < left){
+            backTrack(n,s+")",left, right+1);
+        }
+    }
+};
+//runtime:0 ms
+//memory:13.7 MB

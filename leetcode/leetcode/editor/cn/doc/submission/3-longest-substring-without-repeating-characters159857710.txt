@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int maxLength = 0;
+        int leftIndex = 0;
+        for (int j = 0 ; j < s.size(); j++){
+            for (int innerIndex = leftIndex; innerIndex < j; innerIndex++){
+                if(s[innerIndex] == s[j]){
+                    maxLength = max(maxLength, j - leftIndex);
+                    leftIndex = innerIndex + 1;
+                    break;
+                }
+            }
+        }
+        return max(int(s.size()-leftIndex), maxLength);
+    }
+};
+//runtime:4 ms
+//memory:6.8 MB

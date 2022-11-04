@@ -1,0 +1,28 @@
+class Solution {
+public:
+
+    unordered_map<char, int> map = {{'I',1},{'V',5},{'X',10},{'L',50},{'C',100},{'D',500},{'M',1000}};
+    int romanToInt(string s) {
+        if(s.size() < 1){
+            return 0;
+        }
+        int sum = 0;
+        int preNum = map[s[0]];
+
+        for(int i = 1; i < s.size(); i++){
+            int num = map[s[i]];
+            if(preNum < num){
+                sum -= preNum;
+            }else{
+                sum += preNum;
+            }
+            preNum = num;
+            
+        }
+        sum += preNum;
+        return sum;
+
+    }
+};
+//runtime:20 ms
+//memory:7.5 MB
