@@ -37,3 +37,4 @@ add_executable(25-reverse-nodes-in-k-group leetcode/leetcode/editor/cn/25-revers
 add_executable(887-super-egg-drop leetcode/leetcode/editor/cn/887-super-egg-drop.cpp)
 add_executable(974-subarray-sums-divisible-by-k leetcode/leetcode/editor/cn/974-subarray-sums-divisible-by-k.cpp)
 add_executable(1884-egg-drop-with-2-eggs-and-n-floors leetcode/leetcode/editor/cn/1884-egg-drop-with-2-eggs-and-n-floors.cpp)
+add_executable(26-remove-duplicates-from-sorted-array leetcode/leetcode/editor/cn/26-remove-duplicates-from-sorted-array.cpp)
