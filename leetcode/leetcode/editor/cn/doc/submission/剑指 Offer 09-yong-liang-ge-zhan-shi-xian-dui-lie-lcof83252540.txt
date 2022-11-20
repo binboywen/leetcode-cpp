@@ -1,0 +1,33 @@
+import java.util.*;
+class CQueue {
+    Stack<Integer> pushStack;
+    Stack<Integer> popStack;
+    public CQueue() {
+        pushStack = new Stack<Integer>();
+        popStack = new Stack<Integer>();
+    }
+    
+    public void appendTail(int value) {
+        pushStack.push(value);
+    }
+    
+    public int deleteHead() {
+        if(pushStack.isEmpty() && popStack.isEmpty())
+            return -1;
+        if(popStack.isEmpty()){
+            while(!pushStack.isEmpty()){
+                popStack.push(pushStack.pop());
+            }
+        }
+        return popStack.pop();
+    }
+}
+
+/**
+ * Your CQueue object will be instantiated and called as such:
+ * CQueue obj = new CQueue();
+ * obj.appendTail(value);
+ * int param_2 = obj.deleteHead();
+ */
+//runtime:59 ms
+//memory:47 MB

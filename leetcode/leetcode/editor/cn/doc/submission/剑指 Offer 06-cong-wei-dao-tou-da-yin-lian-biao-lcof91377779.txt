@@ -1,0 +1,44 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    ArrayList<Integer> ret = new ArrayList<>();
+    public int[] reversePrint1(ListNode head) {
+        Stack<Integer> stack = new Stack<>();
+        while(head != null){
+            stack.add(head.val);
+            head = head.next;
+        }
+        int [] result = new int[stack.size()];
+        int index = 0;
+        while(!stack.isEmpty()){
+            result[index++] = stack.pop();
+        }
+        return result;
+        
+    }
+    public int[] reversePrint(ListNode head) {
+        if(head == null)
+            return new int[0];
+        printListFromTailToHeadRecu(head);
+        int [] result = new int[ret.size()];
+        for(int i = 0; i < ret.size();i++){
+            result[i] = ret.get(i);
+        }
+        return result;
+        
+    }
+    public void printListFromTailToHeadRecu(ListNode root){
+        if(root == null)
+            return;
+        printListFromTailToHeadRecu(root.next);
+        ret.add(root.val);
+    }
+}
+//runtime:2 ms
+//memory:40.5 MB
