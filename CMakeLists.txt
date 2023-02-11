@@ -38,3 +38,6 @@ add_executable(887-super-egg-drop leetcode/leetcode/editor/cn/887-super-egg-drop
 add_executable(974-subarray-sums-divisible-by-k leetcode/leetcode/editor/cn/974-subarray-sums-divisible-by-k.cpp)
 add_executable(1884-egg-drop-with-2-eggs-and-n-floors leetcode/leetcode/editor/cn/1884-egg-drop-with-2-eggs-and-n-floors.cpp)
 add_executable(26-remove-duplicates-from-sorted-array leetcode/leetcode/editor/cn/26-remove-duplicates-from-sorted-array.cpp)
+add_executable(quicksort leetcode/CPP/quicksort.cpp)
+add_executable(mergeSort leetcode/CPP/mergeSort.cpp)
+add_executable(heapSort leetcode/CPP/heapSort.cpp)
