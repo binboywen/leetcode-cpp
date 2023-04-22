@@ -41,3 +41,6 @@ add_executable(26-remove-duplicates-from-sorted-array leetcode/leetcode/editor/c
 add_executable(quicksort leetcode/CPP/quicksort.cpp)
 add_executable(mergeSort leetcode/CPP/mergeSort.cpp)
 add_executable(heapSort leetcode/CPP/heapSort.cpp)
+add_executable(topic3-23-04-16 leetcode/CPP/topic3-23-04-16.cpp)
+add_executable(topic-23-04-16 leetcode/CPP/topic-23-04-16.cpp)
+add_executable(topic2-23-04-16 leetcode/CPP/topic2-23-04-16.cpp)
