@@ -59,7 +59,6 @@ public:
         }
         int left = max(maxSum(root->left), 0);
         int right = max(maxSum(root->right), 0);
-        int priceNewpath = root->val + left + right;
         res = max(res, root->val + left + right);
         return root->val + max(left, right);
     }

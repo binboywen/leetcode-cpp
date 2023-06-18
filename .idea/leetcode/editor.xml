@@ -454,6 +454,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/剑指 Offer 19-zheng-ze-biao-da-shi-pi-pei-lcof.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/doc/content/剑指 Offer 19-zheng-ze-biao-da-shi-pi-pei-lcof.md" />
+              <option name="frontendQuestionId" value="leetcode.cn剑指 Offer 19" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/剑指 Offer 19-zheng-ze-biao-da-shi-pi-pei-lcof.cpp" />
+              <option name="titleSlug" value="zheng-ze-biao-da-shi-pi-pei-lcof" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/剑指 Offer 34-er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/doc/content/剑指 Offer 34-er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof.md" />
+              <option name="frontendQuestionId" value="leetcode.cn剑指 Offer 34" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/剑指 Offer 34-er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof.cpp" />
+              <option name="titleSlug" value="er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/剑指 Offer 51-shu-zu-zhong-de-ni-xu-dui-lcof.cpp">
           <value>
             <LeetcodeEditor>

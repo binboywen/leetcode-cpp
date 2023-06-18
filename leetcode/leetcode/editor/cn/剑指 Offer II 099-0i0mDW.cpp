@@ -67,6 +67,21 @@ public:
         }
         return dp[rows - 1][columns - 1];
     }
+    int minPathSum2(vector<vector<int>>& grid) {
+        return bp(grid, 0, 0, 0);
+    }
+    int bp(vector<vector<int>>& grid, int i, int j, int sum) {
+        if (i == grid.size() - 1 && j == grid[0].size() - 1) {
+            return sum + grid[i][j];
+        }
+        if (i == grid.size() - 1) {
+            return bp(grid, i, j + 1, sum + grid[i][j]);
+        }
+        if (j == grid[0].size() - 1) {
+            return bp(grid, i + 1, j, sum + grid[i][j]);
+        }
+        return min(bp(grid, i + 1, j, sum + grid[i][j]), bp(grid, i, j + 1, sum + grid[i][j]));
+    }
 };
 
 //leetcode submit region end(Prohibit modification and deletion)
