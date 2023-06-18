@@ -47,6 +47,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/124-binary-tree-maximum-path-sum.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/doc/content/124-binary-tree-maximum-path-sum.md" />
+              <option name="frontendQuestionId" value="leetcode.cn124" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/124-binary-tree-maximum-path-sum.cpp" />
+              <option name="titleSlug" value="binary-tree-maximum-path-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/13-roman-to-integer.cpp">
           <value>
             <LeetcodeEditor>
@@ -451,6 +462,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/剑指 Offer 51-shu-zu-zhong-de-ni-xu-dui-lcof.cpp" />
               <option name="titleSlug" value="shu-zu-zhong-de-ni-xu-dui-lcof" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/剑指 Offer II 099-0i0mDW.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/doc/content/剑指 Offer II 099-0i0mDW.md" />
+              <option name="frontendQuestionId" value="leetcode.cn剑指 Offer II 099" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/剑指 Offer II 099-0i0mDW.cpp" />
+              <option name="titleSlug" value="0i0mDW" />
             </LeetcodeEditor>
           </value>
         </entry>
