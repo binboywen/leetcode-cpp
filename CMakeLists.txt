@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.19)
 project(leetcode-cpp)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -45,3 +45,4 @@ add_executable(topic3-23-04-16 leetcode/CPP/topic3-23-04-16.cpp)
 add_executable(topic-23-04-16 leetcode/CPP/topic-23-04-16.cpp)
 add_executable(topic2-23-04-16 leetcode/CPP/topic2-23-04-16.cpp)
 add_executable(topic1-23-04-22 leetcode/CPP/topic1-23-04-22.cpp)
+
