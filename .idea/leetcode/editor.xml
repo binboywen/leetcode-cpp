@@ -245,6 +245,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/2808-minimum-seconds-to-equalize-a-circular-array.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/doc/content/2808-minimum-seconds-to-equalize-a-circular-array.md" />
+              <option name="frontendQuestionId" value="leetcode.cn2808" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/2808-minimum-seconds-to-equalize-a-circular-array.cpp" />
+              <option name="titleSlug" value="minimum-seconds-to-equalize-a-circular-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/3-longest-substring-without-repeating-characters.cpp">
           <value>
             <LeetcodeEditor>
