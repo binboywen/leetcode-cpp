@@ -1,0 +1,310 @@
+## 方法一：模拟
+
+1. 初始化一个长为 $n$ 的全 $0$ 数组 $\textit{ans}$。
+2. 从 $i=1$ 开始循环，每次循环把分出的糖果数加到 $\textit{ans}[(i-1)\bmod n]$ 中。
+3. 分出 $\min(i, \textit{candies})$ 颗糖果，把 $\textit{candies}$ 减少 $i$，然后 $i$ 增加 $1$。
+4. 循环直到 $\textit{candies}\le 0$。
+5. 返回 $\textit{ans}$。
+
+* [sol-Python3]
+
+```py
+class Solution:
+    def distributeCandies(self, candies: int, n: int) -> List[int]:
+        ans = [0] * n
+        i = 1
+        while candies > 0:
+            ans[(i - 1) % n] += min(i, candies)
+            candies -= i
+            i += 1
+        return ans
+```
+
+* [sol-Java]
+
+```java
+public class Solution {
+    public int[] distributeCandies(int candies, int n) {
+        int[] ans = new int[n];
+        for (int i = 1; candies > 0; i++) {
+            ans[(i - 1) % n] += Math.min(i, candies);
+            candies -= i;
+        }
+        return ans;
+    }
+}
+```
+
+* [sol-C++]
+
+```cpp
+class Solution {
+public:
+    vector<int> distributeCandies(int candies, int n) {
+        vector<int> ans(n);
+        for (int i = 1; candies > 0; i++) {
+            ans[(i - 1) % n] += min(i, candies);
+            candies -= i;
+        }
+        return ans;
+    }
+};
+```
+
+* [sol-C]
+
+```c
+int* distributeCandies(int candies, int n, int* returnSize) {
+    int* ans = calloc(n, sizeof(int));
+    *returnSize = n;
+    for (int i = 1; candies > 0; i++) {
+        ans[(i - 1) % n] += i < candies ? i : candies;
+        candies -= i;
+    }
+    return ans;
+}
+```
+
+* [sol-Go]
+
+```go
+func distributeCandies(candies, n int) []int {
+    ans := make([]int, n)
+    for i := 1; candies > 0; i++ {
+        ans[(i-1)%n] += min(i, candies)
+        candies -= i
+    }
+    return ans
+}
+```
+
+* [sol-JavaScript]
+
+```js
+var distributeCandies = function(candies, n) {
+    const ans = Array(n).fill(0);
+    for (let i = 1; candies > 0; i++) {
+        ans[(i - 1) % n] += Math.min(i, candies);
+        candies -= i;
+    }
+    return ans;
+};
+```
+
+* [sol-Rust]
+
+```rust
+impl Solution {
+    pub fn distribute_candies(mut candies: i32, n: i32) -> Vec<i32> {
+        let n = n as usize;
+        let mut ans = vec![0; n];
+        let mut i = 1;
+        while candies > 0 {
+            ans[(i - 1) as usize % n] += i.min(candies);
+            candies -= i;
+            i += 1;
+        }
+        ans
+    }
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$\mathcal{O}(n + \sqrt{\textit{candies}})$。循环 $\mathcal{O}(\sqrt{\textit{candies}})$ 次，理由见方法二。
+- 空间复杂度：$\mathcal{O}(1)$。返回值不计入。
+
+## 方法二：数学公式
+
+方法一会循环多少次？
+
+如果第 $i$ 次循环分给小朋友 $i$ 颗糖果，则称作分出了「足够」的糖果。
+
+假设最后在第 $m$ 次循环分出了足够的糖果（第 $m+1$ 次循环糖果个数不够），那么有
+
+$$
+1 + 2 + 3 + \cdots + m = \dfrac{m(m+1)}{2} \le \textit{candies}
+$$
+
+解得
+
+$$
+m\le \dfrac{\sqrt{8\cdot \textit{candies} + 1}-1}{2}
+$$
+
+由于 $m$ 是整数，所以
+
+$$
+m = \left\lfloor\dfrac{\sqrt{8\cdot \textit{candies}+1}-1}{2}\right\rfloor
+$$
+
+设 $k=\left\lfloor\dfrac{m}{n}\right\rfloor,\ \textit{extra}=m\bmod n$。
+
+分配糖果的顺序如下表：
+
+| $\textit{ans}_0$  |  $\textit{ans}_1$ | $\cdots$  | $\textit{ans}_i$  | $\cdots$  | $\textit{ans}_{n-1}$  |
+|---|---|---|---|---|---|
+| $1$  | $2$  | $\cdots$  | $i+1$  | $\cdots$  | $n$  |
+| $n+1$  | $n+2$  | $\cdots$  | $n+i+1$  | $\cdots$  | $2n$  |
+| $2n+1$  | $2n+2$  | $\cdots$  | $2n+i+1$  | $\cdots$  | $3n$  |
+| $\vdots$  | $\vdots$  |  | $\vdots$  |   | $\vdots$  |
+| $(k-1)n+1$  | $(k-1)n+2$  | $\cdots$  | $(k-1)n+i+1$  | $\cdots$  | $kn$  |
+
+上表第 $i$ 列的元素和为
+
+$$
+\begin{align}
+&(i+1) + (n+i+1) + (2n+i+1) + \cdots + (k-1)n+i+1\\
+=\ &\dfrac{k(k-1)}{2}n + k(i+1)
+\end{align}
+$$
+
+注意最后一排下面还有一排：$kn+1,kn+2,\cdots,kn+\textit{extra}, r$，其中 $r$ 是最后一个小朋友分到的糖果数，即 $\textit{candies} - \dfrac{m(m+1)}{2}$。
+
+- 如果 $i<\textit{extra}$，$\textit{ans}_i$ 加上 $kn + i + 1$。
+- 如果 $i=\textit{extra}$，$\textit{ans}_i$ 加上 $\textit{candies} - \dfrac{m(m+1)}{2}$。
+
+* [sol-Python3]
+
+```py
+class Solution:
+    def distributeCandies(self, candies: int, n: int) -> List[int]:
+        m = int((sqrt(8 * candies + 1) - 1) / 2)
+        k, extra = divmod(m, n)
+        ans = [k * (k - 1) // 2 * n + k * (i + 1) +
+               (k * n + i + 1 if i < extra else 0)
+               for i in range(n)]
+        ans[extra] += candies - m * (m + 1) // 2
+        return ans
+```
+
+* [sol-Java]
+
+```java
+public class Solution {
+    public int[] distributeCandies(int candies, int n) {
+        int m = (int) ((Math.sqrt(8.0 * candies + 1) - 1) / 2);
+        int k = m / n;
+        int extra = m % n;
+        int[] ans = new int[n];
+        for (int i = 0; i < n; i++) {
+            ans[i] = k * (k - 1) / 2 * n + k * (i + 1) + (i < extra ? k * n + i + 1 : 0);
+        }
+        ans[extra] += candies - m * (m + 1) / 2;
+        return ans;
+    }
+}
+```
+
+* [sol-C++]
+
+```cpp
+class Solution {
+public:
+    vector<int> distributeCandies(int candies, int n) {
+        int m = (sqrt(8.0 * candies + 1) - 1) / 2;
+        int k = m / n, extra = m % n;
+        vector<int> ans(n);
+        for (int i = 0; i < n; i++) {
+            ans[i] = k * (k - 1) / 2 * n + k * (i + 1) + (i < extra ? k * n + i + 1 : 0);
+        }
+        ans[extra] += candies - m * (m + 1) / 2;
+        return ans;
+    }
+};
+```
+
+* [sol-C]
+
+```c
+int* distributeCandies(int candies, int n, int* returnSize) {
+    int m = (sqrt(8.0 * candies + 1) - 1) / 2;
+    int k = m / n;
+    int extra = m % n;
+    int* ans = calloc(n, sizeof(int));
+    *returnSize = n;
+    for (int i = 0; i < n; i++) {
+        ans[i] = k * (k - 1) / 2 * n + k * (i + 1) + (i < extra ? k * n + i + 1 : 0);
+    }
+    ans[extra] += candies - m * (m + 1) / 2;
+    return ans;
+}
+```
+
+* [sol-Go]
+
+```go
+func distributeCandies(candies, n int) []int {
+    m := int((math.Sqrt(float64(8*candies+1)) - 1) / 2)
+    k, extra := m/n, m%n
+    ans := make([]int, n)
+    for i := range ans {
+        k := k
+        if i < extra {
+            k++
+        }
+        ans[i] = k*(k-1)/2*n + k*(i+1)
+    }
+    ans[extra] += candies - m*(m+1)/2
+    return ans
+}
+```
+
+* [sol-JavaScript]
+
+```js
+var distributeCandies = function(candies, n) {
+    const m = Math.floor((Math.sqrt(8 * candies + 1) - 1) / 2);
+    const k = Math.floor(m / n);
+    const extra = m % n;
+    const ans = Array(n).fill(0);
+    for (let i = 0; i < n; i++) {
+        ans[i] = k * (k - 1) / 2 * n + k * (i + 1) + (i < extra ? k * n + i + 1 : 0);
+    }
+    ans[extra] += candies - m * (m + 1) / 2;
+    return ans;
+}
+```
+
+* [sol-Rust]
+
+```rust
+impl Solution {
+    pub fn distribute_candies(candies: i32, n: i32) -> Vec<i32> {
+        let m = (((8.0 * candies as f64 + 1.0).sqrt() - 1.0) / 2.0) as i32;
+        let k = m / n;
+        let extra = m % n;
+        let mut ans = (0..n).map(|i| {
+            let k = if i < extra { k + 1 } else { k };
+            k * (k - 1) / 2 * n + k * (i + 1)
+        }).collect::<Vec<_>>();
+        ans[extra as usize] += candies - m * (m + 1) / 2;
+        ans
+    }
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$\mathcal{O}(n)$。
+- 空间复杂度：$\mathcal{O}(1)$。返回值不计入。
+
+注：由于数据范围太小，两个方法的实际运行时间没有显著差别。
+
+## 分类题单
+
+以下题单没有特定的顺序，可以按照个人喜好刷题。
+
+1. [滑动窗口（定长/不定长/多指针）](https://leetcode.cn/circle/discuss/0viNMK/)
+2. [二分算法（二分答案/最小化最大值/最大化最小值/第K小）](https://leetcode.cn/circle/discuss/SqopEo/)
+3. [单调栈（基础/矩形面积/贡献法/最小字典序）](https://leetcode.cn/circle/discuss/9oZFK9/)
+4. [网格图（DFS/BFS/综合应用）](https://leetcode.cn/circle/discuss/YiXPXW/)
+5. [位运算（基础/性质/拆位/试填/恒等式/贪心/脑筋急转弯）](https://leetcode.cn/circle/discuss/dHn9Vk/)
+6. [图论算法（DFS/BFS/拓扑排序/最短路/最小生成树/二分图/基环树/欧拉路径）](https://leetcode.cn/circle/discuss/01LUak/)
+7. [动态规划（入门/背包/状态机/划分/区间/状压/数位/数据结构优化/树形/博弈/概率期望）](https://leetcode.cn/circle/discuss/tXLS3i/)
+8. [常用数据结构（前缀和/差分/栈/队列/堆/字典树/并查集/树状数组/线段树）](https://leetcode.cn/circle/discuss/mOr1u6/)
+9. [数学算法（数论/组合/概率期望/博弈/计算几何/随机算法）](https://leetcode.cn/circle/discuss/IYT3ss/)
+
+[我的题解精选（已分类）](https://github.com/EndlessCheng/codeforces-go/blob/master/leetcode/SOLUTIONS.md)
+
+欢迎关注 [B站@灵茶山艾府](https://space.bilibili.com/206214)
