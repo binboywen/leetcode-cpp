@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <math.h>
 using namespace std;
 class Solution {
 public:
@@ -27,23 +28,48 @@ public:
 
 //leetcode submit region end(Prohibit modification and deletion)
 
+vector<int> sortedSquares(vector<int>& nums) {
+    int left = 0;
+    int right = nums.size() - 1;
+    while (left < right) {
+        int leftPow = pow(nums[left], 2);
+        int rightPow = pow(nums[right], 2);
+        if (leftPow > rightPow) {
+            nums[left] = nums[right];
+            nums[right] = leftPow;
+            right--;
+        } else {
+            nums[right] = rightPow;
+            right--;
+        }
+    }
+    return nums;
+}
 
 int main()
 {
-    Solution s;
-    vector<int> data{7, 1, 5, 3, 6, 4};
-    //vector<int> ans = s.twoSum(data,11);
-    //cout << ans[0]<<ans[1]<<endl;
-
-    int m,n;
-    cin >> m;
-    cin >> n;
-    vector<vector<int>> arr(m, vector<int>(n));
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            cin >> arr[i][j];
-        }
-    }
-    cout << s.minPathSum(arr);
+//    Solution s;
+//    vector<int> data{7, 1, 5, 3, 6, 4};
+//    //vector<int> ans = s.twoSum(data,11);
+//    //cout << ans[0]<<ans[1]<<endl;
+//
+//    int m,n;
+//    cin >> m;
+//    cin >> n;
+//    vector<vector<int>> arr(m, vector<int>(n));
+//    for (int i = 0; i < m; i++) {
+//        for (int j = 0; j < n; j++) {
+//            cin >> arr[i][j];
+//        }
+//    }
+//    cout << s.minPathSum(arr);
+    string ssss = "abbcd";
+    cout << ssss.substr(0, 0) << endl;
+    cout << ssss.find("b") << endl;
     cout<<"Hello LeetCode"<<endl;
+    vector<int> nums = {-4,-1,0,3,10};
+    vector<int> res = sortedSquares(nums);
+    for (auto i : res) {
+        cout << i << endl;
+    }
 }
